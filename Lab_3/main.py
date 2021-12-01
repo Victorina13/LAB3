@@ -31,7 +31,7 @@ def quick_sort(data,key):
 
 data = json.load(open("result.txt", encoding="windows-1251"))
 quick_sort(data,'weight')
-json.dump(data, open("result_sort.txt", "w", encoding="windows-1251"), ensure_ascii=False, indent=5)
+
 json.dump(data, open("result_sort.json", "w", encoding="windows-1251"), ensure_ascii=False, indent=5)
 result = json.load(open("result_sort.json", encoding="windows-1251"))
 print(result)
