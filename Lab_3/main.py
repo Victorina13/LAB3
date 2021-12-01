@@ -1,23 +1,23 @@
 import json
 
 
-def quick_sort(data):
+def quick_sort(data,key):
     if len(data) < 2:
         return
     start_end = [[0, len(data) - 1]]
     while len(start_end) > 0:
         start, end = start_end.pop()
-        key = data[(start + end) // 2]
+        pivot = data[(start + end) // 2]
         i = start - 1
         j = end + 1
         while True:
             while True:
                 i = i + 1
-                if key['weight'] <= data[i]['weight']:
+                if pivot[key] <= data[i][key]:
                     break
             while True:
                 j = j - 1
-                if data[j]['weight'] <= key['weight']:
+                if data[j][key] <= pivot[key]:
                     break
             if i >= j:
                 break
@@ -30,7 +30,7 @@ def quick_sort(data):
 
 
 data = json.load(open("result.txt", encoding="windows-1251"))
-quick_sort(data)
+quick_sort(data,'weight')
 json.dump(data, open("result_sort.txt", "w", encoding="windows-1251"), ensure_ascii=False, indent=5)
 json.dump(data, open("result_sort.json", "w", encoding="windows-1251"), ensure_ascii=False, indent=5)
 result = json.load(open("result_sort.json", encoding="windows-1251"))
